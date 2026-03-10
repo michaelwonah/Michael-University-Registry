@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "sql3819865",
+    "password": "TRTI8rp131",
+    "database": "sql3819865",
+    "host": "sql3.freesqldatabase.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
