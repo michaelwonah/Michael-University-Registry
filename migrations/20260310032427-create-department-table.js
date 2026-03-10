@@ -3,20 +3,36 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('departmentTables', {
-      id: {
+      departmentId: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
-      firstName: {
-        type: Sequelize.STRING
+      departmentName: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      lastName: {
-        type: Sequelize.STRING
+      departmentCode: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      email: {
-        type: Sequelize.STRING
+      hod: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      facultyId:{
+        type:Sequelize.UUID,
+        allowNull: false,
+        ForeignKey: true,
+        references: {
+          model: 'facultyTables',
+          key: 'facultyId'
+        }
+      },
+      dateCreated: {
+        type: Sequelize.DATE,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
