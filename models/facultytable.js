@@ -11,12 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.facultyTable.hasMany(models.departmentTable, {
+        foreignKey: 'facultyId',
+        as: 'departments'
+      })
     }
   }
   facultyTable.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING
+       facultyId: {
+        allowNull: false,
+        primaryKey: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4
+       },
+       facultyName: DataTypes.STRING,
+       dean: DataTypes.STRING,
+       dateCreated: DataTypes.DATE,
+       facultyCode: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'facultyTable',
