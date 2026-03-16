@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       models.departmentTable.belongsTo(models.facultyTable,{
         foreignKey: 'facultyId',
         as: 'faculty'
+      }),
+
+      models.departmentTable.hasMany(models.studentTable, {
+        foreignKey: 'departmentId',
+        as: 'students'
       })
     }
   }

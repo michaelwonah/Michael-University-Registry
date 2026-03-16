@@ -14,8 +14,15 @@ module.exports = (sequelize, DataTypes) => {
       models.facultyTable.hasMany(models.departmentTable, {
         foreignKey: 'facultyId',
         as: 'departments'
+      }),
+
+      models.facultyTable.hasMany(models.staffTable, {
+        foreignKey: 'facultyId',
+        as: 'staffs'
       })
     }
+
+    
   }
   facultyTable.init({
        facultyId: {

@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('staffTables', {
-      id: {
+      staffId: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
@@ -15,7 +15,8 @@ module.exports = {
       },
       staffCode: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
       },
       gender: {
         type: Sequelize.ENUM('Male', 'Female', 'Non-binary'),
@@ -24,6 +25,15 @@ module.exports = {
       qualification: {
         type: Sequelize.STRING,
         allowNull: false
+      },
+      facultyId: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        ForeignKey: true,
+        references: {
+          model: 'facultyTables',
+          key: 'facultyId'
+        }
       },
       dateJoined: {
         type: Sequelize.DATE,

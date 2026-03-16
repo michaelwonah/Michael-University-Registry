@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('studentTables', {
-      id: {
+      studentId: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
@@ -25,6 +25,15 @@ module.exports = {
       gender: {
         type: Sequelize.ENUM('Male', 'Female', 'Non-binary'),
         allowNull: false
+      },
+      departmentId: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        ForeignKey: true,
+        references: {
+          model: 'departmentTables',
+          key: 'departmentId'
+        }
       },
       dateJoined: {
         type: Sequelize.DATE,

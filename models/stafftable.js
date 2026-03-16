@@ -11,10 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.staffTable.belongsTo(models.facultyTable, {
+        foreignKey: 'facultyId',
+        as: 'faculty'
+      })
     }
   }
   staffTable.init({
-    id: {
+    staffId: {
         allowNull: false,
         primaryKey: true,
         type: DataTypes.UUID,
@@ -24,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
     staffCode: DataTypes.STRING,
     gender: DataTypes.ENUM('Male', 'Female', 'Non-binary'),
     qualification: DataTypes.STRING,
-    dateJoined: DataTypes.DATE
+    facultyId: DataTypes.UUID,
+    dateJoined: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'staffTable',
